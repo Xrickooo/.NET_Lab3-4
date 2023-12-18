@@ -16791,84 +16791,84 @@
       <ObjectId>1</ObjectId>
       <Visible>1</Visible>
     </assembly>
-    <role id="5559" parent="5517" name="public">
-      <AuthType>none</AuthType>
-      <ObjectId>0</ObjectId>
-      <Type>database-role</Type>
-      <OwnerId>1</OwnerId>
-    </role>
-    <role id="5560" parent="5517" name="dbo">
-      <AuthType>windows</AuthType>
-      <DefaultSchema>dbo</DefaultSchema>
-      <ObjectId>1</ObjectId>
-      <Type>windows-user</Type>
-    </role>
-    <role id="5561" parent="5517" name="guest">
-      <AuthType>none</AuthType>
-      <DefaultSchema>guest</DefaultSchema>
-      <ObjectId>2</ObjectId>
-    </role>
-    <role id="5562" parent="5517" name="INFORMATION_SCHEMA">
+    <role id="5559" parent="5517" name="INFORMATION_SCHEMA">
       <AuthType>none</AuthType>
       <ObjectId>3</ObjectId>
     </role>
-    <role id="5563" parent="5517" name="sys">
-      <AuthType>none</AuthType>
-      <ObjectId>4</ObjectId>
-    </role>
-    <role id="5564" parent="5517" name="db_owner">
-      <AuthType>none</AuthType>
-      <ObjectId>16384</ObjectId>
-      <Type>database-role</Type>
-      <OwnerId>1</OwnerId>
-    </role>
-    <role id="5565" parent="5517" name="db_accessadmin">
+    <role id="5560" parent="5517" name="db_accessadmin">
       <AuthType>none</AuthType>
       <ObjectId>16385</ObjectId>
       <Type>database-role</Type>
       <OwnerId>1</OwnerId>
     </role>
-    <role id="5566" parent="5517" name="db_securityadmin">
-      <AuthType>none</AuthType>
-      <ObjectId>16386</ObjectId>
-      <Type>database-role</Type>
-      <OwnerId>1</OwnerId>
-    </role>
-    <role id="5567" parent="5517" name="db_ddladmin">
-      <AuthType>none</AuthType>
-      <ObjectId>16387</ObjectId>
-      <Type>database-role</Type>
-      <OwnerId>1</OwnerId>
-    </role>
-    <role id="5568" parent="5517" name="db_backupoperator">
+    <role id="5561" parent="5517" name="db_backupoperator">
       <AuthType>none</AuthType>
       <ObjectId>16389</ObjectId>
       <Type>database-role</Type>
       <OwnerId>1</OwnerId>
     </role>
-    <role id="5569" parent="5517" name="db_datareader">
+    <role id="5562" parent="5517" name="db_datareader">
       <AuthType>none</AuthType>
       <ObjectId>16390</ObjectId>
       <Type>database-role</Type>
       <OwnerId>1</OwnerId>
     </role>
-    <role id="5570" parent="5517" name="db_datawriter">
+    <role id="5563" parent="5517" name="db_datawriter">
       <AuthType>none</AuthType>
       <ObjectId>16391</ObjectId>
       <Type>database-role</Type>
       <OwnerId>1</OwnerId>
     </role>
-    <role id="5571" parent="5517" name="db_denydatareader">
+    <role id="5564" parent="5517" name="db_ddladmin">
+      <AuthType>none</AuthType>
+      <ObjectId>16387</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="5565" parent="5517" name="db_denydatareader">
       <AuthType>none</AuthType>
       <ObjectId>16392</ObjectId>
       <Type>database-role</Type>
       <OwnerId>1</OwnerId>
     </role>
-    <role id="5572" parent="5517" name="db_denydatawriter">
+    <role id="5566" parent="5517" name="db_denydatawriter">
       <AuthType>none</AuthType>
       <ObjectId>16393</ObjectId>
       <Type>database-role</Type>
       <OwnerId>1</OwnerId>
+    </role>
+    <role id="5567" parent="5517" name="db_owner">
+      <AuthType>none</AuthType>
+      <ObjectId>16384</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="5568" parent="5517" name="db_securityadmin">
+      <AuthType>none</AuthType>
+      <ObjectId>16386</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="5569" parent="5517" name="dbo">
+      <AuthType>windows</AuthType>
+      <DefaultSchema>dbo</DefaultSchema>
+      <ObjectId>1</ObjectId>
+      <Type>windows-user</Type>
+    </role>
+    <role id="5570" parent="5517" name="guest">
+      <AuthType>none</AuthType>
+      <DefaultSchema>guest</DefaultSchema>
+      <ObjectId>2</ObjectId>
+    </role>
+    <role id="5571" parent="5517" name="public">
+      <AuthType>none</AuthType>
+      <ObjectId>0</ObjectId>
+      <Type>database-role</Type>
+      <OwnerId>1</OwnerId>
+    </role>
+    <role id="5572" parent="5517" name="sys">
+      <AuthType>none</AuthType>
+      <ObjectId>4</ObjectId>
     </role>
     <schema id="5573" parent="5517" name="INFORMATION_SCHEMA">
       <ObjectId>3</ObjectId>
@@ -16917,8 +16917,8 @@
 1333579789|||2|execute|D
 1349579846|||0|execute|G
 1349579846|||2|execute|D</Grants>
-      <IntrospectionTimestamp>2023-12-11.20:56:53.880</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-12-11.18:56:53</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2023-12-18.03:50:47.680</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-12-18.01:50:47</LocalIntrospectionTimestamp>
       <ObjectId>1</ObjectId>
       <PermissionsCheckSum>16277399745</PermissionsCheckSum>
     </schema>
@@ -17025,7 +17025,7 @@ int</ExtendedProperties>
     </table>
     <table id="5597" parent="5583" name="Users">
       <CreatedTimestamp>2023-11-22.03:03:31.267</CreatedTimestamp>
-      <ModifiedTimestamp>2023-11-22.03:03:31.280</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-12-18.03:50:47.277</ModifiedTimestamp>
       <ObjectId>885578193</ObjectId>
     </table>
     <table id="5598" parent="5583" name="sysdiagrams">
@@ -17307,7 +17307,7 @@ FriendID</ColNames>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>1(2)</SequenceIdentity>
+      <SequenceIdentity>1(15)</SequenceIdentity>
     </column>
     <column id="5645" parent="5597" name="FirstName">
       <DasType>nvarchar(50 char)|0s</DasType>
@@ -17331,27 +17331,37 @@ FriendID</ColNames>
       <DefaultConstraintId>933578364</DefaultConstraintId>
       <DefaultConstraintName>DF__Users__Registere__37A5467C</DefaultConstraintName>
     </column>
-    <default id="5650" parent="5597" name="DF__Users__Registere__37A5467C">
+    <column id="5650" parent="5597" name="Login">
+      <DasType>nvarchar(50 char)|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <default id="5651" parent="5597" name="DF__Users__Registere__37A5467C">
       <ColNames>RegisteredDate</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2023-11-22.03:03:31.270</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>933578364</ObjectId>
     </default>
-    <index id="5651" parent="5597" name="PK__Users__1788CCACFBAE9C07">
+    <index id="5652" parent="5597" name="PK__Users__1788CCACFBAE9C07">
       <Clustering>1</Clustering>
       <ColNames>UserID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="5652" parent="5597" name="UQ__Users__A9D105343B533AF0">
+    <index id="5653" parent="5597" name="UQ__Users__A9D105343B533AF0">
       <ColNames>Email</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>2</Position>
       <Unique>1</Unique>
     </index>
-    <key id="5653" parent="5597" name="PK__Users__1788CCACFBAE9C07">
+    <index id="5654" parent="5597" name="UQ__Users__5E55825BE166831A">
+      <ColNames>Login</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Position>5</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="5655" parent="5597" name="PK__Users__1788CCACFBAE9C07">
       <CreatedTimestamp>2023-11-22.03:03:31.270</CreatedTimestamp>
       <ModifiedTimestamp>2023-11-22.03:03:31.270</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -17359,51 +17369,58 @@ FriendID</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Users__1788CCACFBAE9C07</UnderlyingIndexName>
     </key>
-    <key id="5654" parent="5597" name="UQ__Users__A9D105343B533AF0">
+    <key id="5656" parent="5597" name="UQ__Users__A9D105343B533AF0">
       <CreatedTimestamp>2023-11-22.03:03:31.270</CreatedTimestamp>
       <ModifiedTimestamp>2023-11-22.03:03:31.270</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>917578307</ObjectId>
       <UnderlyingIndexName>UQ__Users__A9D105343B533AF0</UnderlyingIndexName>
     </key>
-    <column id="5655" parent="5598" name="name">
+    <key id="5657" parent="5597" name="UQ__Users__5E55825BE166831A">
+      <CreatedTimestamp>2023-12-18.03:50:47.277</CreatedTimestamp>
+      <ModifiedTimestamp>2023-12-18.03:50:47.277</ModifiedTimestamp>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>1525580473</ObjectId>
+      <UnderlyingIndexName>UQ__Users__5E55825BE166831A</UnderlyingIndexName>
+    </key>
+    <column id="5658" parent="5598" name="name">
       <DasType>sysname|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="5656" parent="5598" name="principal_id">
+    <column id="5659" parent="5598" name="principal_id">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="5657" parent="5598" name="diagram_id">
+    <column id="5660" parent="5598" name="diagram_id">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <SequenceIdentity>1(2)</SequenceIdentity>
     </column>
-    <column id="5658" parent="5598" name="version">
+    <column id="5661" parent="5598" name="version">
       <DasType>int|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="5659" parent="5598" name="definition">
+    <column id="5662" parent="5598" name="definition">
       <DasType>varbinary(max)|0s</DasType>
       <Position>5</Position>
     </column>
-    <index id="5660" parent="5598" name="PK__sysdiagr__C2B05B61D8678079">
+    <index id="5663" parent="5598" name="PK__sysdiagr__C2B05B61D8678079">
       <Clustering>1</Clustering>
       <ColNames>diagram_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="5661" parent="5598" name="UK_principal_name">
+    <index id="5664" parent="5598" name="UK_principal_name">
       <ColNames>principal_id
 name</ColNames>
       <Position>2</Position>
       <Unique>1</Unique>
     </index>
-    <key id="5662" parent="5598" name="PK__sysdiagr__C2B05B61D8678079">
+    <key id="5665" parent="5598" name="PK__sysdiagr__C2B05B61D8678079">
       <CreatedTimestamp>2023-11-22.03:03:40.830</CreatedTimestamp>
       <ModifiedTimestamp>2023-11-22.03:03:40.830</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -17411,7 +17428,7 @@ name</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__sysdiagr__C2B05B61D8678079</UnderlyingIndexName>
     </key>
-    <key id="5663" parent="5598" name="UK_principal_name">
+    <key id="5666" parent="5598" name="UK_principal_name">
       <CreatedTimestamp>2023-11-22.03:03:40.830</CreatedTimestamp>
       <ModifiedTimestamp>2023-11-22.03:03:40.830</ModifiedTimestamp>
       <ObjectId>1237579447</ObjectId>

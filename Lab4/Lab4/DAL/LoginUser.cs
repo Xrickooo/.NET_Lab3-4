@@ -7,30 +7,39 @@ namespace SocialNetwork.DAL;
 
 public partial class UserRepository
 {
-    public bool ValidateUser(string email, string password)
+    public int LoginUser(string login, string password)
     {
         var hashedPassword = HashPassword(password);
 
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT COUNT(*) FROM Users WHERE Email = @Email AND Password = @Password";
+            string query = "SELECT UserID FROM Users WHERE Login = @Login AND Password = @Password";
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@Email", email);
+            command.Parameters.AddWithValue("@Login", login);
             command.Parameters.AddWithValue("@Password", hashedPassword);
 
             try
             {
                 connection.Open();
-                int userCount = (int)command.ExecuteScalar();
-                return userCount > 0;
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    return Convert.ToInt32(result);
+                }
+                else
+                {
+                    return -1; // Користувач не знайдений
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-                return false;
+                return -1; // Помилка при виконанні запиту
             }
         }
     }
+
+
 
 
     private string HashPassword(string password)
@@ -62,7 +71,35 @@ public partial class UserRepository
     {
         return !string.IsNullOrWhiteSpace(password) && password.Length >= 2;
     }
+    
+    private bool IsValidLogin(string login)
+    {
+        return !string.IsNullOrWhiteSpace(login) && login.Length >= 3 && Regex.IsMatch(login, @"^[a-zA-Z0-9_]+$");
+    }
+    
+    public bool IsLoginAlreadyRegistered(string login)
+    {
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = "SELECT COUNT(*) FROM Users WHERE Login = @Login";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Login", login);
 
+            try
+            {
+                connection.Open();
+                int userCount = (int)command.ExecuteScalar();
+                return userCount > 0; 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
+            }
+        }
+    }
+
+    
     public bool IsEmailAlreadyRegistered(string email)
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))

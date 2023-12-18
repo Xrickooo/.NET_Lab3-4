@@ -4,25 +4,31 @@ namespace SocialNetwork.DAL;
 
 public partial class UserRepository
 {
-    public bool RegisterUser(string firstName, string lastName, string email, string password)
+    public enum RegistrationResult
     {
-        if (!IsValidEmail(email) || !IsValidName(firstName) || !IsValidName(lastName) || !IsValidPassword(password))
+        Success,
+        EmailAlreadyExists,
+        InvalidData,
+        Failure
+    }
+
+    public RegistrationResult RegisterUser(string login, string firstName, string lastName, string email, string password)
+    {
+        if (!IsValidEmail(email) || !IsValidLogin(login) || !IsValidName(firstName) || !IsValidName(lastName) || !IsValidPassword(password))
         {
-            Console.WriteLine("Invalid input data");
-            return false;
+            return RegistrationResult.InvalidData;
         }
-            
-        if (IsEmailAlreadyRegistered(email))
+    
+        if (IsEmailAlreadyRegistered(email) || IsLoginAlreadyRegistered(login))
         {
-            Console.WriteLine("Email is already registered");
-            return false;
+            return RegistrationResult.EmailAlreadyExists; // Можливо, вам знадобиться новий результат для дублікату логіна
         }
 
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query =
-                "INSERT INTO Users (FirstName, LastName, Email, Password) VALUES (@FirstName, @LastName, @Email, @Password)";
+            string query = "INSERT INTO Users (Login, FirstName, LastName, Email, Password) VALUES (@Login, @FirstName, @LastName, @Email, @Password)";
             SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Login", login);
             command.Parameters.AddWithValue("@FirstName", firstName);
             command.Parameters.AddWithValue("@LastName", lastName);
             command.Parameters.AddWithValue("@Email", email);
@@ -32,13 +38,15 @@ public partial class UserRepository
             {
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0;
+                return rowsAffected > 0 ? RegistrationResult.Success : RegistrationResult.Failure;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-                return false;
+                return RegistrationResult.Failure;
             }
         }
     }
+
+
 }

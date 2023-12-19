@@ -90,6 +90,7 @@ namespace SocialNetwork.PL.Controllers
                 return BadRequest("Invalid user ID format");
             }
 
+            
             var result = _userLogic.SendFriendRequest(currentUserId, friendLogin);
             switch (result)
             {

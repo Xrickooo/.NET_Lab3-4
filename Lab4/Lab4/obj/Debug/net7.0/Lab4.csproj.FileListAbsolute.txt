@@ -45,3 +45,9 @@ C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\Mi
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\Castle.Core.dll
+C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\Moq.dll
+C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\xunit.abstractions.dll
+C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\xunit.assert.dll
+C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\xunit.core.dll
+C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\xunit.execution.dotnet.dll

@@ -1,10 +1,12 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using Lab4.Models;
 using Microsoft.IdentityModel.Tokens;
-using SocialNetwork.DAL;
+using SocialNetwork;
 using Lab4.Models;
+using SocialNetwork.DAL;
 
 namespace SocialNetwork.BLL
 {
@@ -26,17 +28,19 @@ namespace SocialNetwork.BLL
         {
             return _userRepository.LoginUser(login, password);
         }
-
         
         public bool ChangePasswordForLoggedInUser(string userEmail, string oldPassword, string newPassword)
         {
-            int userId = _userRepository.LoginUser(userEmail, oldPassword);
-            if (userId != -1) 
+            string hashedOldPassword = HashPassword(oldPassword);
+            int userId = _userRepository.ValidateUserCredentials(userEmail, hashedOldPassword);
+            if (userId != -1)
             {
-                return _userRepository.ChangePassword(userEmail, newPassword);
+                string hashedNewPassword = HashPassword(newPassword);
+                return _userRepository.ChangePassword(userEmail, hashedNewPassword);
             }
-            return false; 
+            return false;
         }
+
 
         
         public UserRepository.FriendRequestResult SendFriendRequest(int userId, string friendLogin)
@@ -45,39 +49,81 @@ namespace SocialNetwork.BLL
 
             if (friendId == -1)
             {
-                return UserRepository.FriendRequestResult.Failure; // Користувача не знайдено
+                return UserRepository.FriendRequestResult.Failure; 
             }
     
             if (userId == friendId)
             {
-                return UserRepository.FriendRequestResult.Failure; // Неможливо відправити запит самому собі
+                return UserRepository.FriendRequestResult.Failure; 
             }
 
             if (_userRepository.IsFriendRequestAlreadySent(userId, friendId))
             {
-                return UserRepository.FriendRequestResult.AlreadySent; // Запит вже відправлено
+                return UserRepository.FriendRequestResult.AlreadySent; 
             }
             else if (_userRepository.SendFriendRequest(userId, friendId))
             {
-                return UserRepository.FriendRequestResult.Success; // Запит успішно відправлено
+                return UserRepository.FriendRequestResult.Success; 
             }
             else
             {
-                return UserRepository.FriendRequestResult.Failure; // Запит не вдалося відправити
+                return UserRepository.FriendRequestResult.Failure; 
             }
         }
 
         
-        public bool RespondToFriendRequest(int userId, int friendId, bool accept)
+        public bool RespondToFriendRequest(int userId, string friendLogin, bool accept)
         {
-            return _userRepository.RespondToFriendRequest(userId, friendId, accept);
+            return _userRepository.RespondToFriendRequest(userId, friendLogin, accept);
         }
         
         public List<FriendRequest> GetFriendRequests(int userId)
         {
             return _userRepository.GetFriendRequests(userId);
         }
+        
+        public List<string> GetFriends(int userId)
+        {
+            return _userRepository.GetFriends(userId);
+        }
+        
+        public bool RemoveFriend(int userId, string friendLogin)
+        {
+            return _userRepository.RemoveFriend(userId, friendLogin);
+        }
+        
+        public bool CreateDialog(int userId, string friendLogin)
+        {
+            return _userRepository.CreateDialog(userId, friendLogin);
+        }
+        
+        public List<Dialog> GetUserDialogs(int userId)
+        {
+            return _userRepository.GetUserDialogs(userId);
+        }
+        
+        public bool SendMessageToFriend(int userId, string friendLogin, string messageContent)
+        {
+            int friendId = _userRepository.GetUserIdByLogin(friendLogin);
+            if (friendId == -1)
+            {
+                return false; 
+            }
 
+            int dialogId = _userRepository.FindDialogId(userId, friendId);
+            if (dialogId == -1)
+            {
+                return false; 
+            }
+
+            return _userRepository.SendMessage(dialogId, userId, messageContent);
+        }
+
+        public List<Message> GetDialogMessages(int userId, string friendLogin)
+        {
+            return _userRepository.GetDialogMessages(userId, friendLogin);
+        }
+        
         public string GenerateJwtToken(string email, int userId)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("12345678876543211234567887654321"));
@@ -97,6 +143,21 @@ namespace SocialNetwork.BLL
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+        
+        public string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < hashedBytes.Length; i++)
+                {
+                    builder.Append(hashedBytes[i].ToString("x2"));
+                }
+
+                return builder.ToString();
+            }
         }
 
     }

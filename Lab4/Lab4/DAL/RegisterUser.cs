@@ -21,7 +21,7 @@ public partial class UserRepository
     
         if (IsEmailAlreadyRegistered(email) || IsLoginAlreadyRegistered(login))
         {
-            return RegistrationResult.EmailAlreadyExists; // Можливо, вам знадобиться новий результат для дублікату логіна
+            return RegistrationResult.EmailAlreadyExists; 
         }
 
         using (SqlConnection connection = new SqlConnection(_connectionString))

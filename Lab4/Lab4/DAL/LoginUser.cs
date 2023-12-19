@@ -28,21 +28,18 @@ public partial class UserRepository
                 }
                 else
                 {
-                    return -1; // Користувач не знайдений
+                    return -1; 
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-                return -1; // Помилка при виконанні запиту
+                return -1; 
             }
         }
     }
-
-
-
-
-    private string HashPassword(string password)
+    
+    public string HashPassword(string password)
     {
         using (SHA256 sha256 = SHA256.Create())
         {
@@ -112,7 +109,7 @@ public partial class UserRepository
             {
                 connection.Open();
                 int userCount = (int)command.ExecuteScalar();
-                return userCount > 0; // Возвращает true, если почта уже зарегистрирована
+                return userCount > 0; 
             }
             catch (Exception ex)
             {

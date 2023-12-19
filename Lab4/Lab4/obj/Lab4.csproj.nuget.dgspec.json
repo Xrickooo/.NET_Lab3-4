@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[7.0.13, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
@@ -64,6 +68,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[7.0.3, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.6.3, )"
             }
           },
           "imports": [

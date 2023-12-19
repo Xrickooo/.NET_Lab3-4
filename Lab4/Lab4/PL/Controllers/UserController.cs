@@ -42,9 +42,7 @@ namespace SocialNetwork.PL.Controllers
                     return BadRequest("Failed to register user");
             }
         }
-
-
-
+        
         [HttpPost("login")]
         public IActionResult LoginUser([FromBody] UserLoginModel model)
         {
@@ -60,13 +58,11 @@ namespace SocialNetwork.PL.Controllers
                 return BadRequest(new { Message = "Invalid login or password" });
             }
         }
-
-
         
         [HttpPut("changePassword")]
-        public IActionResult ChangePassword(string email, string oldPassword, string newPassword)
+        public IActionResult ChangePassword([FromBody] ChangePasswordModel model)
         {
-            bool isPasswordChanged = _userLogic.ChangePasswordForLoggedInUser(email, oldPassword, newPassword);
+            bool isPasswordChanged = _userLogic.ChangePasswordForLoggedInUser(model.Email, model.OldPassword, model.NewPassword);
 
             if (isPasswordChanged)
             {
@@ -77,7 +73,6 @@ namespace SocialNetwork.PL.Controllers
                 return BadRequest("Failed to change password");
             }
         }
-
         
         [Authorize]
         [HttpPost("sendRequest")]
@@ -109,25 +104,24 @@ namespace SocialNetwork.PL.Controllers
                     return BadRequest("Failed to send friend request");
             }
         }
-
         
         [Authorize]
         [HttpPut("relationships/respondToRequest")]
-        public IActionResult RespondToFriendRequest(int userId, bool accept)
+        public IActionResult RespondToFriendRequest(string friendLogin, bool accept)
         {
-            var userId2 = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userIdString = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (string.IsNullOrEmpty(userId2))
+            if (string.IsNullOrEmpty(userIdString))
             {
                 return Unauthorized("User is not authenticated");
             }
 
-            if (!int.TryParse(userId2, out int currentUserId))
+            if (!int.TryParse(userIdString, out int currentUserId))
             {
                 return BadRequest("Invalid user ID format");
             }
 
-            bool result = _userLogic.RespondToFriendRequest(currentUserId, userId, accept);
+            bool result = _userLogic.RespondToFriendRequest(currentUserId, friendLogin, accept);
             if (result)
             {
                 return Ok($"Friend request {(accept ? "accepted" : "declined")} successfully");
@@ -157,9 +151,141 @@ namespace SocialNetwork.PL.Controllers
             var requests = _userLogic.GetFriendRequests(currentUserId);
             return Ok(requests);
         }
+        
+        [Authorize]
+        [HttpGet("friends")]
+        public IActionResult GetFriends()
+        {
+            var userIdString = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
+            if (string.IsNullOrEmpty(userIdString))
+            {
+                return Unauthorized("User is not authenticated");
+            }
 
+            if (!int.TryParse(userIdString, out int currentUserId))
+            {
+                return BadRequest("Invalid user ID format");
+            }
 
+            var friends = _userLogic.GetFriends(currentUserId);
+            return Ok(friends);
+        }
+        
+        [Authorize]
+        [HttpDelete("friends/remove")]
+        public IActionResult RemoveFriend(string friendLogin)
+        {
+            var userIdString = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
+            if (string.IsNullOrEmpty(userIdString))
+            {
+                return Unauthorized("User is not authenticated");
+            }
+
+            if (!int.TryParse(userIdString, out int currentUserId))
+            {
+                return BadRequest("Invalid user ID format");
+            }
+
+            bool result = _userLogic.RemoveFriend(currentUserId, friendLogin);
+            if (result)
+            {
+                return Ok("Friend removed successfully");
+            }
+            else
+            {
+                return BadRequest("Failed to remove friend");
+            }
+        }
+        
+        [Authorize]
+        [HttpPost("dialogs/create")]
+        public IActionResult CreateDialog(string friendLogin)
+        {
+            var userIdString = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userIdString))
+            {
+                return Unauthorized("User is not authenticated");
+            }
+
+            if (!int.TryParse(userIdString, out int currentUserId))
+            {
+                return BadRequest("Invalid user ID format");
+            }
+
+            bool result = _userLogic.CreateDialog(currentUserId, friendLogin);
+            if (result)
+            {
+                return Ok("Dialog created successfully");
+            }
+            else
+            {
+                return BadRequest("Failed to create dialog");
+            }
+        }
+        
+        [Authorize]
+        [HttpGet("dialogs")]
+        public IActionResult GetUserDialogs()
+        {
+            var userIdString = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userIdString))
+            {
+                return Unauthorized("User is not authenticated");
+            }
+
+            if (!int.TryParse(userIdString, out int currentUserId))
+            {
+                return BadRequest("Invalid user ID format");
+            }
+
+            var dialogs = _userLogic.GetUserDialogs(currentUserId);
+            return Ok(dialogs);
+        }
+        
+        [Authorize]
+        [HttpPost("messages/send")]
+        public IActionResult SendMessageToFriend(string friendLogin, [FromBody] MessageModel model)
+        {
+            var userIdString = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out int senderId))
+            {
+                return Unauthorized("User is not authenticated or invalid user ID");
+            }
+
+            bool result = _userLogic.SendMessageToFriend(senderId, friendLogin, model.Content);
+            if (result)
+            {
+                return Ok("Message sent successfully");
+            }
+            else
+            {
+                return BadRequest("Failed to send message");
+            }
+        }
+        
+        [Authorize]
+        [HttpGet("dialogs/messages")]
+        public IActionResult GetDialogMessages(string friendLogin)
+        {
+            var userIdString = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out int userId))
+            {
+                return Unauthorized("User is not authenticated or invalid user ID");
+            }
+
+            var messages = _userLogic.GetDialogMessages(userId, friendLogin);
+            if (messages == null)
+            {
+                return BadRequest("Dialog not found or friend not found");
+            }
+
+            return Ok(messages);
+        }
     }
 }

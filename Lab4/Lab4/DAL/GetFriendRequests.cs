@@ -11,7 +11,7 @@ public partial class UserRepository
 
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT UserID, FriendID, Status FROM Relationships WHERE FriendID = @FriendID AND Status = 0";
+            string query = "SELECT u.Login FROM Relationships r JOIN Users u ON r.UserID = u.UserID WHERE r.FriendID = @FriendID AND r.Status = 0";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@FriendID", userId);
 
@@ -24,9 +24,9 @@ public partial class UserRepository
                     {
                         requests.Add(new FriendRequest
                         {
-                            UserId = reader.GetInt32(reader.GetOrdinal("UserID")),
-                            FriendId = userId,
-                            Status = reader.GetBoolean(reader.GetOrdinal("Status"))
+                            UserLogin = reader.GetString(reader.GetOrdinal("Login")),
+                            FriendId = userId, 
+                            Status = false
                         });
                     }
                 }
@@ -39,5 +39,4 @@ public partial class UserRepository
 
         return requests;
     }
-
 }

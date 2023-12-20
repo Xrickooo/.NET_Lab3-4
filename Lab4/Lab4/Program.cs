@@ -6,7 +6,6 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Додайте цей код для конфігурації JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -22,17 +21,33 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-// Далі йде ваш існуючий код
-builder.Services.AddScoped<UserRepository>(_ => new UserRepository(@"Data Source=.\SQLExpress;Initial Catalog=SocialNetwork;Integrated Security=True;"));
-builder.Services.AddScoped<UserLogic>();
-builder.Services.AddAuthorization(); // Ви вже додали це
+builder.Services.AddScoped<IUserAccountRepository>(provider => 
+    new UserAccountRepository(@"Data Source=.\SQLExpress;Initial Catalog=SocialNetwork;Integrated Security=True;"));
+
+builder.Services.AddScoped<IFriendRequestRepository>(provider => 
+    new FriendRequestRepository(@"Data Source=.\SQLExpress;Initial Catalog=SocialNetwork;Integrated Security=True;"));
+
+builder.Services.AddScoped<IDialogRepository>(provider => 
+    new DialogRepository(@"Data Source=.\SQLExpress;Initial Catalog=SocialNetwork;Integrated Security=True;"));
+
+builder.Services.AddScoped<IUserRepository>(provider => 
+    new UserRepository(
+        @"Data Source=.\SQLExpress;Initial Catalog=SocialNetwork;Integrated Security=True;",
+        provider.GetRequiredService<IUserAccountRepository>(),
+        provider.GetRequiredService<IFriendRequestRepository>(),
+        provider.GetRequiredService<IDialogRepository>()
+    )
+);
+builder.Services.AddScoped<UserLogic>(provider => 
+    new UserLogic(provider.GetRequiredService<IUserRepository>()));
+
+builder.Services.AddAuthorization(); 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Переконайтеся, що ви додали це перед app.UseAuthorization()
 app.UseAuthentication(); 
 
 if (app.Environment.IsDevelopment())

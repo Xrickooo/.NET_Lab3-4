@@ -1,3 +1,17 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=146498EB_002DBE26_002D4A4B_002DB711_002DBA14716F656F_002Ff_003AProgram_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\rofla\AppData\Local\JetBrains\Rider2023.2\resharper-host\temp\Rider\vAny\CoverageData\_Lab4.-186274216\Snapshot\snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7eab6ad4_002Da0a1_002D4c52_002Da3e1_002D9aeb25fad52f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RegisterUser_WhenUserIsSuccessfullyRegistered_ReturnsOk" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::8AD8DCB6-2BF5-4C69-8BF4-38635CC94521::net7.0::Tests.UserControllerTests.RegisterUser_WhenUserIsSuccessfullyRegistered_ReturnsOk&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8b3ff58f_002D90d3_002D4d24_002Db600_002D0b0366f1866d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="RegisterUser_WhenUserIsSuccessfullyRegistered_ReturnsOk #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Tests" Presentation="&amp;lt;Tests&amp;gt;" /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fde61e71_002D9394_002D4802_002D8017_002Db85393f10191/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RegisterUser_WhenUserIsSuccessfullyRegistered_ReturnsOk #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::8AD8DCB6-2BF5-4C69-8BF4-38635CC94521::net7.0::Tests.UserControllerTests.RegisterUser_WhenUserIsSuccessfullyRegistered_ReturnsOk&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>

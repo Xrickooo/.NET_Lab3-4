@@ -12,116 +12,131 @@ namespace SocialNetwork.BLL
 {
     public class UserLogic 
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserLogic(UserRepository userRepository)
+        public UserLogic(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public UserRepository.RegistrationResult RegisterUser(string login, string firstName, string lastName, string email, string password)
+        public RegistrationResult RegisterUser(string login, string firstName, string lastName, string email, string password)
         {
-            return _userRepository.RegisterUser(login, firstName, lastName, email, password);
+            return _userRepository.UserAccountRepository.RegisterUser(login, firstName, lastName, email, password);
         }
         
         public int LoginUser(string login, string password)
         {
-            return _userRepository.LoginUser(login, password);
+            return _userRepository.UserAccountRepository.LoginUser(login, password);
         }
         
         public bool ChangePasswordForLoggedInUser(string userEmail, string oldPassword, string newPassword)
         {
             string hashedOldPassword = HashPassword(oldPassword);
-            int userId = _userRepository.ValidateUserCredentials(userEmail, hashedOldPassword);
+            int userId = _userRepository.UserAccountRepository.ValidateUserCredentials(userEmail, hashedOldPassword);
             if (userId != -1)
             {
                 string hashedNewPassword = HashPassword(newPassword);
-                return _userRepository.ChangePassword(userEmail, hashedNewPassword);
+                return _userRepository.UserAccountRepository.ChangePassword(userEmail, hashedNewPassword);
             }
             return false;
         }
 
 
         
-        public UserRepository.FriendRequestResult SendFriendRequest(int userId, string friendLogin)
+        public FriendRequestResult SendFriendRequest(int userId, string friendLogin)
         {
-            int friendId = _userRepository.GetUserIdByLogin(friendLogin);
+            int friendId = _userRepository.FriendRequestRepository.GetUserIdByLogin(friendLogin);
 
             if (friendId == -1)
             {
-                return UserRepository.FriendRequestResult.Failure; 
+                return FriendRequestResult.Failure; 
             }
     
             if (userId == friendId)
             {
-                return UserRepository.FriendRequestResult.Failure; 
+                return FriendRequestResult.Failure; 
             }
 
-            if (_userRepository.IsFriendRequestAlreadySent(userId, friendId))
+            if (_userRepository.FriendRequestRepository.IsFriendRequestAlreadySent(userId, friendId))
             {
-                return UserRepository.FriendRequestResult.AlreadySent; 
+                return FriendRequestResult.AlreadySent; 
             }
-            else if (_userRepository.SendFriendRequest(userId, friendId))
+            else if (_userRepository.FriendRequestRepository.SendFriendRequest(userId, friendId))
             {
-                return UserRepository.FriendRequestResult.Success; 
+                return FriendRequestResult.Success; 
             }
             else
             {
-                return UserRepository.FriendRequestResult.Failure; 
+                return FriendRequestResult.Failure; 
             }
         }
 
         
         public bool RespondToFriendRequest(int userId, string friendLogin, bool accept)
         {
-            return _userRepository.RespondToFriendRequest(userId, friendLogin, accept);
+            return _userRepository.FriendRequestRepository.RespondToFriendRequest(userId, friendLogin, accept);
         }
         
         public List<FriendRequest> GetFriendRequests(int userId)
         {
-            return _userRepository.GetFriendRequests(userId);
+            return _userRepository.FriendRequestRepository.GetFriendRequests(userId);
         }
         
         public List<string> GetFriends(int userId)
         {
-            return _userRepository.GetFriends(userId);
+            return _userRepository.FriendRequestRepository.GetFriends(userId);
         }
         
         public bool RemoveFriend(int userId, string friendLogin)
         {
-            return _userRepository.RemoveFriend(userId, friendLogin);
+            return _userRepository.FriendRequestRepository.RemoveFriend(userId, friendLogin);
         }
         
         public bool CreateDialog(int userId, string friendLogin)
         {
-            return _userRepository.CreateDialog(userId, friendLogin);
+            return _userRepository.DialogRepository.CreateDialog(userId, friendLogin);
         }
         
         public List<Dialog> GetUserDialogs(int userId)
         {
-            return _userRepository.GetUserDialogs(userId);
+            return _userRepository.DialogRepository.GetUserDialogs(userId);
         }
         
         public bool SendMessageToFriend(int userId, string friendLogin, string messageContent)
         {
-            int friendId = _userRepository.GetUserIdByLogin(friendLogin);
+            int friendId = _userRepository.FriendRequestRepository.GetUserIdByLogin(friendLogin);
             if (friendId == -1)
             {
                 return false; 
             }
 
-            int dialogId = _userRepository.FindDialogId(userId, friendId);
+            int dialogId = _userRepository.DialogRepository.FindDialogId(userId, friendId);
             if (dialogId == -1)
             {
                 return false; 
             }
 
-            return _userRepository.SendMessage(dialogId, userId, messageContent);
+            return _userRepository.DialogRepository.SendMessage(dialogId, userId, messageContent);
         }
 
         public List<Message> GetDialogMessages(int userId, string friendLogin)
         {
-            return _userRepository.GetDialogMessages(userId, friendLogin);
+            return _userRepository.DialogRepository.GetDialogMessages(userId, friendLogin);
+        }
+        
+        public string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < hashedBytes.Length; i++)
+                {
+                    builder.Append(hashedBytes[i].ToString("x2"));
+                }
+
+                return builder.ToString();
+            }
         }
         
         public string GenerateJwtToken(string email, int userId)
@@ -143,21 +158,6 @@ namespace SocialNetwork.BLL
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-        
-        public string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < hashedBytes.Length; i++)
-                {
-                    builder.Append(hashedBytes[i].ToString("x2"));
-                }
-
-                return builder.ToString();
-            }
         }
 
     }

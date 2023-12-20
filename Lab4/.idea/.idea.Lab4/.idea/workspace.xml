@@ -15,6 +15,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lab4/Program.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -105,7 +109,7 @@
       <updated>1702258656138</updated>
       <workItem from="1702258657392" duration="23206000" />
       <workItem from="1702746048067" duration="7684000" />
-      <workItem from="1702768123293" duration="34014000" />
+      <workItem from="1702768123293" duration="54478000" />
     </task>
     <servers />
   </component>
@@ -126,9 +130,19 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet Exception Breakpoints">
+          <properties exception="Xunit.Sdk.NotNullException" isInternal="false" displayValue="NotNullException" namespaceName="Xunit.Sdk">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="LaunchSettings">
-        <watch expression="model" />
+        <watch expression="model" language="C#" />
       </configuration>
     </watches-manager>
   </component>

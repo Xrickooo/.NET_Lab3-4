@@ -28,16 +28,16 @@ namespace SocialNetwork.PL.Controllers
 
             switch (result)
             {
-                case UserRepository.RegistrationResult.Success:
+                case RegistrationResult.Success:
                     return Ok("User successfully registered");
 
-                case UserRepository.RegistrationResult.EmailAlreadyExists:
+                case RegistrationResult.EmailAlreadyExists:
                     return BadRequest("Email or login is already registered");
 
-                case UserRepository.RegistrationResult.InvalidData:
+                case RegistrationResult.InvalidData:
                     return BadRequest("Invalid registration data");
 
-                case UserRepository.RegistrationResult.Failure:
+                case RegistrationResult.Failure:
                 default:
                     return BadRequest("Failed to register user");
             }
@@ -94,13 +94,13 @@ namespace SocialNetwork.PL.Controllers
             var result = _userLogic.SendFriendRequest(currentUserId, friendLogin);
             switch (result)
             {
-                case UserRepository.FriendRequestResult.Success:
+                case FriendRequestResult.Success:
                     return Ok("Friend request sent successfully");
 
-                case UserRepository.FriendRequestResult.AlreadySent:
+                case FriendRequestResult.AlreadySent:
                     return BadRequest("Friend request already sent");
 
-                case UserRepository.FriendRequestResult.Failure:
+                case FriendRequestResult.Failure:
                 default:
                     return BadRequest("Failed to send friend request");
             }

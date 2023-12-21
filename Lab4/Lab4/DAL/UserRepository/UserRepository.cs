@@ -6,21 +6,6 @@ using Lab4.Models;
 
 namespace SocialNetwork.DAL
 {
-    public enum RegistrationResult
-    {
-        Success,
-        EmailAlreadyExists,
-        InvalidData,
-        Failure
-    }
-    
-    public interface IUserRepository
-    {
-        IUserAccountRepository UserAccountRepository { get; }
-        IFriendRequestRepository FriendRequestRepository { get; }
-        IDialogRepository DialogRepository { get; }
-    }
-    
     public class UserRepository : IUserRepository
     {
         private readonly string _connectionString;
@@ -41,5 +26,12 @@ namespace SocialNetwork.DAL
         public IDialogRepository DialogRepository { get; private set; }
     }
 
+    public enum RegistrationResult
+    {
+        Success,
+        EmailAlreadyExists,
+        InvalidData,
+        Failure
+    }
 
 }

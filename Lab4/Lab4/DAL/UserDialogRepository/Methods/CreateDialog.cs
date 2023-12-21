@@ -45,7 +45,7 @@ public partial class DialogRepository
         }
     }
 
-    private bool IsDialogExists(int userId, int friendId)
+    public bool IsDialogExists(int userId, int friendId)
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
@@ -70,7 +70,7 @@ public partial class DialogRepository
     }
 
 
-    private bool AreFriends(int userId, int friendId)
+    public bool AreFriends(int userId, int friendId)
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {

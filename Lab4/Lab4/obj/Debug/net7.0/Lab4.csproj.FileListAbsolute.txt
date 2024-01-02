@@ -15,8 +15,6 @@ C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\obj\Debug\net7.0\La
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\obj\Debug\net7.0\Lab4.AssemblyInfoInputs.cache
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\obj\Debug\net7.0\Lab4.AssemblyInfo.cs
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\obj\Debug\net7.0\Lab4.csproj.CoreCompileInputs.cache
-C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\obj\Debug\net7.0\Lab4.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\obj\Debug\net7.0\Lab4.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\obj\Debug\net7.0\staticwebassets\msbuild.Lab4.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\obj\Debug\net7.0\staticwebassets\msbuild.build.Lab4.props
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Lab4.props
@@ -45,9 +43,3 @@ C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\Mi
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\Castle.Core.dll
-C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\Moq.dll
-C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\xunit.abstractions.dll
-C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\xunit.assert.dll
-C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\xunit.core.dll
-C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Lab4\bin\Debug\net7.0\xunit.execution.dotnet.dll

@@ -1,0 +1,40 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7eab6ad4_002Da0a1_002D4c52_002Da3e1_002D9aeb25fad52f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RegisterUser_WhenUserIsSuccessfullyRegistered_ReturnsOk" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::8AD8DCB6-2BF5-4C69-8BF4-38635CC94521::net7.0::Tests.UserControllerTests.RegisterUser_WhenUserIsSuccessfullyRegistered_ReturnsOk&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fde61e71_002D9394_002D4802_002D8017_002Db85393f10191/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RegisterUser_WhenUserIsSuccessfullyRegistered_ReturnsOk #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::8AD8DCB6-2BF5-4C69-8BF4-38635CC94521::net7.0::Tests.UserControllerTests.RegisterUser_WhenUserIsSuccessfullyRegistered_ReturnsOk&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=784689b0_002D9990_002D44f0_002Db068_002D21b6c1728642/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UserAccountRepositoryTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::8AD8DCB6-2BF5-4C69-8BF4-38635CC94521::net7.0::SocialNetwork.Tests.UserAccountRepositoryTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3f18b7ba_002D9c8a_002D4508_002Da28c_002D474d77c789e3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LoginUser_ValidUser_ReturnsUserId" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::8AD8DCB6-2BF5-4C69-8BF4-38635CC94521::net7.0::SocialNetwork.Tests.UserAccountRepositoryTests.LoginUser_ValidUser_ReturnsUserId&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1dd67fb6_002De5f9_002D43e1_002D964b_002Dee3be0cdc2ab/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UserAccountRepositoryTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::8AD8DCB6-2BF5-4C69-8BF4-38635CC94521::net7.0::SocialNetwork.Tests.UserAccountRepositoryTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=632f11bd_002Dee79_002D43f8_002D9585_002D94633d2a0b1f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="LoginUser_ValidUser_ReturnsUserId #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;And&gt;&#xD;
+      &lt;Namespace&gt;SocialNetwork.Tests&lt;/Namespace&gt;&#xD;
+      &lt;Project Location="C:\Users\rofla\Desktop\3 курс\.NET\.NET_Lab3-4\Lab4\Tests" Presentation="&amp;lt;Tests&amp;gt;" /&gt;&#xD;
+    &lt;/And&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;xUnit::8AD8DCB6-2BF5-4C69-8BF4-38635CC94521::net7.0::MockFriendRequestRepositoryTests.GetFriendRequests_ReturnsListOfFriendRequests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::8AD8DCB6-2BF5-4C69-8BF4-38635CC94521::net7.0::MockFriendRequestRepositoryTests.GetFriendRequests_ReturnsCorrectFriendRequests&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=146498EB_002DBE26_002D4A4B_002DB711_002DBA14716F656F_002Ff_003AProgram_002Ecs/@EntryIndexedValue">ForceIncluded</s:String></wpf:ResourceDictionary>
